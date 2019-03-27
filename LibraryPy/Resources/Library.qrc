@@ -1,0 +1,6 @@
+<!DOCTYPE RCC><RCC version="1.0">
+    <qresource> 
+        <file>icons/Library.svg</file>
+        <file>ui/preferences-library.ui</file>
+    </qresource>
+</RCC> 

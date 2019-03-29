@@ -31,32 +31,28 @@ class LibraryPyWorkbench ( Workbench ):
 
     def Initialize(self):
         # load the module
-        import LibraryCommands
+        import LibraryPyGui
 
         # self.appendToolbar(str(QtCore.QT_TRANSLATE_NOOP("LibraryPy","Import part")), cmdlst1)
-        self.appendToolbar("LibraryPy", ["BIM_Part", "MEP_Part", "Material", "Texture"])
-        self.appendCommandbar("LibraryPy", ["BIM_Part", "MEP_Part", "Material", "Texture"])
-        self.appendMenu("LibraryPy", ["BIM_Part", "MEP_Part", "Material", "Texture"])
+        self.appendToolbar("LibraryPy", ["Import_StandardPart", "Import_StandardAssembly"])
+        self.appendCommandbar("LibraryPy", ["Import_StandardPart", "Import_StandardAssembly"])
+        self.appendMenu("LibraryPy", ["Import_StandardPart", "Import_StandardAssembly"])
 
         FreeCADGui.addIconPath(":/icons")
         # FreeCADGui.addLanguagePath(":/translations")
         # FreeCADGui.addPreferencePage(":/ui/preferences-library.ui')","LibraryPy")
 
-        try:
-            import importPart
-        except ImportError:
-            from PySide import QtCore, QtGui
-            msg = QtGui.QApplication.translate(
-                "LibraryPy_console",
-                "Module Assembly2 not found, import part as assembly will be disabled",
-                None)
-            FreeCAD.Console.PrintMessage(msg + '\n')
-
     def Activated(self):
+        if FreeCAD.GuiUp:
+            from LibraryPyTaskPanels import InitTaskPanel, InitTaskPanelWidget
+            from PySide import QtGui, QtCore
+            FreeCADGui.Control.showDialog(InitTaskPanel())
+            #FreeCADGui.getMainWindow().addDockWidget(QtCore.Qt.RightDockWidgetArea, InitTaskPanelWidget)
         Msg("LibraryPyWorkbench::Activated()\n")
         Log("LibraryPy workbench activated\n")
 
     def Deactivated(self):
+        #InitTaskPanelWidget.destroyed()
         Msg("LibraryPyWorkbench::Deactivated()\n")
         Log("LibraryPy workbench deactivated\n")
 
@@ -65,6 +61,5 @@ class LibraryPyWorkbench ( Workbench ):
 
     def GetClassName(self):
         return "Gui::PythonWorkbench"
-
 
 FreeCADGui.addWorkbench(LibraryPyWorkbench)

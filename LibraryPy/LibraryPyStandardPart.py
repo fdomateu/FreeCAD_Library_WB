@@ -49,9 +49,9 @@ class _StandardPart:
         if not "Material" in propList:
             obj.addProperty("App::PropertyLink","Material","Base","Material")
 		if not "Color" in propList:
-			obj.addProperty("App::PropertyColor","Color","Base","Color")
-		if not "Group" in propList:
-			obj.addProperty("App::PropertyLinkList","Group","Base","Group")
+            obj.addProperty("App::PropertyColor","Color","Base","Color")
+        if not "Group" in propList:
+            obj.addProperty("App::PropertyLinkList","Group","Base","Group")
 
 class _ViewProviderStandardPart:
 

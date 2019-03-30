@@ -54,8 +54,8 @@ class _StandardPart:
 			obj.addProperty("App::PropertyLinkList","Group","Base","Group")
 
 class _ViewProviderStandardPart:
-
-    "A View Provider for the Standard Part object"
+	
+	"A View Provider for the Standard Part object"
 
 	def __init__(self, obj):
 		''' Set this object to the proxy object of the actual view provider '''

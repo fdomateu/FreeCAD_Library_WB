@@ -41,17 +41,27 @@ class ImportStandardPart:
                         return True
 
     def Activated(self):
-        #from LibraryPyStandardPart import _StandardPart
-        #from LibraryPyStandardPart import _ViewProviderStandardPart
+        from LibraryPyStandardPart import _StandardPart
+        from LibraryPyStandardPart import _ViewProviderStandardPart
 
         #a=FreeCAD.ActiveDocument.addObject("Part::FeaturePython","Test")
         #_StandardPart(a)
         #_ViewProviderStandardPart(a.ViewObject)
         #_ViewProviderStandardPart(a)
         #FreeCAD.ActiveDocument.recompute()
+
+        Dialog = True
+        TaskPanel = False
+
+        if Dialog:
+                import LibraryPyPopUpWindowCollectionNavigation
+                Window = LibraryPyPopUpWindowCollectionNavigation.CollectionNaviationDialog()
+                Window.exec_()
         
-        from LibraryPyTaskPanels import ImportStandardPartPanel, CollectionTreePanelWidget, CollectionTreePanel
-        FreeCADGui.Control.showDialog(ImportStandardPartPanel())
+        if TaskPanel:
+                from LibraryPyTaskPanels import ImportStandardPartPanel, CollectionTreePanelWidget, CollectionTreePanel
+                FreeCADGui.Control.showDialog(ImportStandardPartPanel())
+
 
 class ImportStandardAssembly:
     "Create an standard assembly in the FreeCAD document"

@@ -1,7 +1,7 @@
-# FreeCAD LibraryPyTaskPanels script of LibraryPy module
+# FreeCAD LibraryPyTaskPanelImportPart script of LibraryPy module
 
 #***************************************************************************
-#*   Copyright (c) 2019 Fernando Mateu    <fdomateu@gmail.com>             *
+#*   Copyright (c) YEAR YOUR NAME         <Your e-mail address>            *
 #*                                                                         *
 #*   This file is part of the FreeCAD CAx development system.              *
 #*                                                                         *

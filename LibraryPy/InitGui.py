@@ -44,7 +44,7 @@ class LibraryPyWorkbench ( Workbench ):
 
     def Activated(self):
         
-        from LibraryPyTaskPanels import InitTaskPanelWidget
+        from LibraryPyTaskPanelInit import InitTaskPanelWidget
         from PySide import QtGui, QtCore
         #FreeCADGui.Control.showDialog(InitTaskPanel())
         mw = FreeCADGui.getMainWindow()

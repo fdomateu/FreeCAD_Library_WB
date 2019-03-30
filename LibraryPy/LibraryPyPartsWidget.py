@@ -1,7 +1,7 @@
 # FreeCAD LibraryPyPartsWidget script of LibraryPy module
 
 #***************************************************************************
-#*   Copyright (c) 2019 Fernando Mateu    <fdomateu@gmail.com>             *
+#*   Copyright (c) YEAR YOUR NAME         <Your e-mail address>            *
 #*                                                                         *
 #*   This file is part of the FreeCAD CAx development system.              *
 #*                                                                         *
@@ -28,9 +28,6 @@ from PySide import QtCore, QtGui
 from PySide.QtCore import SIGNAL
 
 # Definition of the standard part options widget depending on the information available
-
-import sys, FreeCAD
-from PySide import QtCore, QtGui
 
 class StandardPartOptionsWidget(QtGui.QWidget):
 

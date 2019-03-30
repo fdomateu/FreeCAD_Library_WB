@@ -33,9 +33,10 @@ class ActionButtonsWidget(QtGui.QWidget):
 
     # Definition of the Table view tab
 
-    def __init__(self):
+    def __init__(self, w):
         super(ActionButtonsWidget, self).__init__()
         self.initUI()
+        self.parent = w
     
     def initUI(self):
 
@@ -89,11 +90,11 @@ class ActionButtonsWidget(QtGui.QWidget):
         "If an standard part has been selected, the fle from the standard part has to be read and the LibraryPyPartWidget has to be displayed"
         import LibraryPyPopUpWindowStandardPart
         Window = LibraryPyPopUpWindowStandardPart.StandardPartDialog()
-        self.close()
+        self.parent.close()
         Window.exec_()
         
     def onCancel(self):
-        self.close()
+        self.parent.close()
 
 # Dialog to navigate arround the collection directory
 
@@ -113,19 +114,9 @@ class CollectionNaviationDialog(QtGui.QDialog):
         self.mainLayout = QtGui.QVBoxLayout(self)
 
         # Introduction of widgets inside main layout
-        self.buttons = ActionButtonsWidget()
+        self.buttons = ActionButtonsWidget(self)
         self.mainLayout.addWidget(self.buttons)
 
         # Command to show the window, it is a mast
 
         self.show()
-    
-    def mainWidget(self):
-            
-        # Definition of the main widget
-    
-    def selectFamily(self):
-        "Event to display the family list when a familly has been selected with doble click at the tree/grid window"
-    
-    def selectStandardPart(self):
-        "Close dialog and display StandardPartOptionsDialog when a standard part has been selected with doble click at the tree/folder window or at the case of pushing the accept button with a standard part selected"

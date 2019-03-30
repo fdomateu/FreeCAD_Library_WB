@@ -223,9 +223,10 @@ class ActionButtonsWidget(QtGui.QWidget):
 
     # Definition of the Table view tab
 
-    def __init__(self):
+    def __init__(self, w):
         super(ActionButtonsWidget, self).__init__()
         self.initUI()
+        self.parent = w
     
     def initUI(self):
 
@@ -278,11 +279,10 @@ class ActionButtonsWidget(QtGui.QWidget):
         
         "If an standard part has been selected, the fle from the standard part has to be read and the LibraryPyPartWidget has to be displayed"
 
-        self.close()
-        Window.exec_()
+        self.parent.close()
         
     def onCancel(self):
-        self.close()
+        self.parent.close()
 
 # Dialog to select the options from the selected standard part available 
 
@@ -311,7 +311,7 @@ class StandardPartDialog(QtGui.QDialog):
         self.tabs.addTab(self.tableTab,"Table")
         self.tabs.addTab(self.infoTab,"Family Info")
         self.mainLayout.addWidget(self.tabs)
-        self.buttons = ActionButtonsWidget()
+        self.buttons = ActionButtonsWidget(self)
         self.mainLayout.addWidget(self.buttons)
 
         # Command to show the window, it is a mast

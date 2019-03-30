@@ -36,7 +36,7 @@ class _StandardPart:
 
 	def setProperties(self,obj):
 		propList = obj.PropertiesList
-        if not "Label" in propList:
+		if not "Label" in propList:
             obj.addProperty("App::PropertyString","Label","Base","Label")
         if not "License" in propList:
             obj.addProperty("App::PropertyString","License","Base","License")

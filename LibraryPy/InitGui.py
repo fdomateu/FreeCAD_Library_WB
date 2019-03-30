@@ -43,11 +43,15 @@ class LibraryPyWorkbench ( Workbench ):
         # FreeCADGui.addPreferencePage(":/ui/preferences-library.ui')","LibraryPy")
 
     def Activated(self):
-        if FreeCAD.GuiUp:
-            from LibraryPyTaskPanels import InitTaskPanel, InitTaskPanelWidget
-            from PySide import QtGui, QtCore
-            FreeCADGui.Control.showDialog(InitTaskPanel())
-            #FreeCADGui.getMainWindow().addDockWidget(QtCore.Qt.RightDockWidgetArea, InitTaskPanelWidget)
+        
+        from LibraryPyTaskPanels import InitTaskPanelWidget
+        from PySide import QtGui, QtCore
+        #FreeCADGui.Control.showDialog(InitTaskPanel())
+        mw = FreeCADGui.getMainWindow()
+        d = QtGui.QDockWidget()
+        d.setWidget(InitTaskPanelWidget())
+        mw.addDockWidget(QtCore.Qt.RightDockWidgetArea, d)
+        #FreeCADGui.getMainWindow().addDockWidget(QtCore.Qt.RightDockWidgetArea, InitTaskPanelWidget)
         Msg("LibraryPyWorkbench::Activated()\n")
         Log("LibraryPy workbench activated\n")
 

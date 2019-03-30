@@ -40,7 +40,7 @@ class InitTaskPanelWidget(QtGui.QDockWidget):
         self.setWindowTitle('Standard part')
         self.layout = QtGui.QHBoxLayout()
         
-        self.layout.addWidget(self.addpart)
+        # self.layout.addWidget(self.addpart)
     
     def onStandardPart():
         pass
@@ -56,6 +56,8 @@ class InitTaskPanel:
 #        self.mw.addDockWidget(QtCore.Qt.RightDockWidgetArea, DockWidget)
 
 # Definition of the panel which should be displayed when the command create Standard Part is activated
+
+# Definition of the collection panel
 
 class CollectionTreePanelWidget(QtGui.QWidget):
 
@@ -82,7 +84,90 @@ class CollectionTreePanel:
     def __init__(self):
         self.form = CollectionTreePanelWidget()
 
+# Definition of the Standrd Part options panel
+
+class StandardPartOptionsPanelWidget(QtGui.QWidget):
+
+    def __init__(self):
+        super(StandardPartOptionsPanelWidget, self).__init__()
+        self.initUI()
+    
+    def initUI(self):
+        from  LibraryPyPartsWidget import StandardPartOptionsWidget
+        # formatting
+        self.setWindowTitle('Standard Part')
+        # Definition of the main layout
+        self.mainLayout = QtGui.QGridLayout(self)
+        # Definition of widget
+        self.standardpartwidget = StandardPartOptionsWidget()
+        # Introduction of widgets inside the main layout      
+        self.mainLayout.addWidget(self.standardpartwidget)
+    
+class StandardPartOptionsPanel:
+    def __init__(self):
+        self.form = StandardPartOptionsPanelWidget()
+
+# Definition of the importing option panel
+
+class ImportOptionsWidget(QtGui.QWidget):
+
+    # Definition of the buttons that define which type of FreeCAD object will be the standard part (object in the active document or link to object from other document) 
+
+    def __init__(self):
+        super(ImportOptionsWidget, self).__init__()
+        self.initUI()
+    
+    def initUI(self):
+        # formatting
+        self.setWindowTitle('Import options')
+        # Definition of the main layout
+        self.mainLayout = QtGui.QVBoxLayout(self)
+        self.mainLayout.setSpacing(5)
+        
+        # Introduction of widgets inside the main layout
+
+        # Definition of the radio button to choose creating a link of the Standard Part. The standard part is created at a new FreeCAD document.
+
+        self.CADOption = QtGui.QRadioButton('CAD Mechanics')
+        self.CADOption.clicked.connect(self.onCADOption)
+        self.CADOption.setText("CAD Mechanics")
+        iconCAD = QtGui.QIcon()
+        iconCAD.addPixmap(QtGui.QPixmap(FreeCAD.getHomePath() + "Mod/LibraryPy/Resources/icons/Part.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.CADOption.setIcon(iconCAD)
+        self.CADOption.setIconSize(QtCore.QSize(100, 20))
+        self.CADOption.setChecked(True)  # default option
+
+        # Definition of the radio button to choose creatin the Satandard part in the active document
+
+        self.BIMOption = QtGui.QRadioButton('BIM model')
+        self.BIMOption.clicked.connect(self.onBIMOption)
+        self.BIMOption.setText("BIM model")
+        iconBIM = QtGui.QIcon()
+        iconBIM.addPixmap(QtGui.QPixmap(FreeCAD.getHomePath() + "Mod/LibraryPy/Resources/icons/BIM.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.BIMOption.setIcon(iconBIM)
+        self.BIMOption.setIconSize(QtCore.QSize(100, 20))
+
+        # Definition of the layout 
+
+        buttonGroup = QtGui.QButtonGroup()
+        self.mainLayout.addWidget(self.CADOption)
+        buttonGroup.addButton(self.CADOption)
+        self.mainLayout.addWidget(self.BIMOption)
+        buttonGroup.addButton(self.BIMOption)
+    
+    def onCADOption(self):
+        self.encapsulateTypeChoosed = "CAD_Mechanics"
+    
+    def onBIMOption(self):
+        self.encapsulateTypeChoosed = "BIM_model"
+    
+
+class ImportOptions:
+    def __init__(self):
+        self.form = ImportOptionsWidget()
+
+# Creation of the general task panel for importing standard parts
+
 class ImportStandardPartPanel:
     def __init__(self):
-        self.form = [CollectionTreePanelWidget()]
-        
+        self.form = [CollectionTreePanelWidget(), StandardPartOptionsPanelWidget(), ImportOptionsWidget()]   

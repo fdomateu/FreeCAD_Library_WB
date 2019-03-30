@@ -37,21 +37,21 @@ class _StandardPart:
 	def setProperties(self,obj):
 		propList = obj.PropertiesList
 		if not "Label" in propList:
-            obj.addProperty("App::PropertyString","Label","Base","Label")
-        if not "License" in propList:
-            obj.addProperty("App::PropertyString","License","Base","License")
-        if not "License URL" in propList:
-            obj.addProperty("App::PropertyString","License URL","Base","License URL")
-        if not "Base Feature" in propList:
-            obj.addProperty("App::PropertyLinkChild","BaseFeature","Base","Base Feature")
-        if not "Placement" in propList:
-            obj.addProperty("App::PropertyPlacement","Placement","Base","Placement")
-        if not "Material" in propList:
-            obj.addProperty("App::PropertyLink","Material","Base","Material")
-        if not "Color" in propList:
-            obj.addProperty("App::PropertyColor","Color","Base","Color")
-        if not "Group" in propList:
-            obj.addProperty("App::PropertyLinkList","Group","Base","Group")
+			obj.addProperty("App::PropertyString","Label","Base","Label")
+		if not "License" in propList:
+			obj.addProperty("App::PropertyString","License","Base","License")
+		if not "License URL" in propList:
+			obj.addProperty("App::PropertyString","License URL","Base","License URL")
+		if not "Base Feature" in propList:
+			obj.addProperty("App::PropertyLinkChild","BaseFeature","Base","Base Feature")
+		if not "Placement" in propList:
+			obj.addProperty("App::PropertyPlacement","Placement","Base","Placement")
+		if not "Material" in propList:
+			obj.addProperty("App::PropertyLink","Material","Base","Material")
+		if not "Color" in propList:
+			obj.addProperty("App::PropertyColor","Color","Base","Color")
+		if not "Group" in propList:
+			obj.addProperty("App::PropertyLinkList","Group","Base","Group")
 
 class _ViewProviderStandardPart:
 

@@ -47,10 +47,6 @@ class InitTaskPanelWidget(QtGui.QDockWidget):
 
 class InitTaskPanel:
     def __init__(self):
-        self.form = InitTaskPanelWidget()
-
-#class InitTaskPanel:
-#    def __init__(self):
-#        self.mw = FreeCADGui.getMainWindow()
-#    def show(self, DockWidget):
-#        self.mw.addDockWidget(QtCore.Qt.RightDockWidgetArea, DockWidget)
+        self.mw = FreeCADGui.getMainWindow()
+    def show(self, DockWidget):
+        self.mw.addDockWidget(QtCore.Qt.RightDockWidgetArea, DockWidget)

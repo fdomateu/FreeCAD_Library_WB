@@ -44,13 +44,13 @@ class LibraryPyWorkbench ( Workbench ):
 
     def Activated(self):
         
-        from LibraryPyTaskPanelInit import InitTaskPanelWidget
+        from LibraryPyTaskPanelInit import InitTaskPanelWidget, InitTaskPanel
         from PySide import QtGui, QtCore
         #FreeCADGui.Control.showDialog(InitTaskPanel())
         mw = FreeCADGui.getMainWindow()
         d = QtGui.QDockWidget()
         d.setWidget(InitTaskPanelWidget())
-        mw.addDockWidget(QtCore.Qt.RightDockWidgetArea, d)
+        mw.addDockWidget(QtCore.Qt.TopDockWidgetArea, d)
         #FreeCADGui.getMainWindow().addDockWidget(QtCore.Qt.RightDockWidgetArea, InitTaskPanelWidget)
         Msg("LibraryPyWorkbench::Activated()\n")
         Log("LibraryPy workbench activated\n")

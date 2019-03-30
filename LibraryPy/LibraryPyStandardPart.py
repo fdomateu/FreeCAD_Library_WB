@@ -48,7 +48,7 @@ class _StandardPart:
             obj.addProperty("App::PropertyPlacement","Placement","Base","Placement")
         if not "Material" in propList:
             obj.addProperty("App::PropertyLink","Material","Base","Material")
-		if not "Color" in propList:
+        if not "Color" in propList:
             obj.addProperty("App::PropertyColor","Color","Base","Color")
         if not "Group" in propList:
             obj.addProperty("App::PropertyLinkList","Group","Base","Group")

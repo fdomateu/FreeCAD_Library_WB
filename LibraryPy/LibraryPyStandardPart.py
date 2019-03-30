@@ -1,4 +1,4 @@
-# FreeCAD initGui script of LibraryPyGui module
+# FreeCAD LibraryPyStandardPart script of LibraryPy module
 
 #***************************************************************************
 #*   Copyright (c) YEAR YOUR NAME         <Your e-mail address>            *

@@ -1,4 +1,4 @@
-# FreeCAD TaskPableLibraryPy script of LibraryPy module
+# FreeCAD LibraryPyTaskPanels script of LibraryPy module
 
 #***************************************************************************
 #*   Copyright (c) 2019 Fernando Mateu    <fdomateu@gmail.com>             *

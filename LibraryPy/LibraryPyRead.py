@@ -25,7 +25,7 @@
 
 class StandardPartInfo():
 
-    "The standard part info from standard part object"
+    "The generic standard part info object from standard part object"
 
     def __init__(self):
         self.libraryPyObject = "LibraryPy::StandardPartInfo"
@@ -39,6 +39,8 @@ class StandardPartInfo():
     def getDescription(self):
         if self.description != None:
             return self.description
+        else:
+            return None
     
     def setNorm(self, text):
         self.norm = text
@@ -46,6 +48,8 @@ class StandardPartInfo():
     def getNorm(self):
         if self.norm != None:
             return self.norm
+        else:
+            return None
 
     def setOldNorm(self, text):
         self.oldNorm = text
@@ -53,6 +57,8 @@ class StandardPartInfo():
     def getOldNorm(self):
         if self.oldNorm != None:
             return self.oldNorm
+        else:
+            return None
     
     def setIcon(self, iconFile):
         self.icon = iconFile
@@ -60,6 +66,8 @@ class StandardPartInfo():
     def getIcon(self):
         if self.icon != None:
             return self.icon
+        else:
+            return None
     
     def setImage(self, drawingFile):
         self.image = drawingFile
@@ -67,6 +75,17 @@ class StandardPartInfo():
     def getImage(self):
         if self.image != None:
             return self.image
+        else:
+            return None
+    
+    def setDimensions(self, dic):
+        self.dimensions = dic
+    
+    def getDimensions(self):
+        if self.dimensions != None:
+            return self.dimensions
+        else:
+            return None
     
     def setGeometry(self, shape):
         self.geometry = shape
@@ -74,6 +93,8 @@ class StandardPartInfo():
     def getGeometry(self):
         if self.geometry != None:
             return self.geometry
+        else:
+            return None
     
     def setRefineGeometry(self, shape):
         self.refineGeometry = shape
@@ -81,3 +102,5 @@ class StandardPartInfo():
     def getRefineGeometry(self):
         if self.refineGeometry != None:
             return self.refineGeometry
+        else:
+            return None

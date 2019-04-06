@@ -1,29 +1,16 @@
 
-if(MSVC)
-    add_definitions(-DHAVE_ACOSH -DHAVE_ATANH -DHAVE_ASINH)
-else(MSVC)
-    add_definitions(-DHAVE_LIMITS_H -DHAVE_CONFIG_H)
-endif(MSVC)
-
 include_directories(
-    ${CMAKE_BINARY_DIR}
     ${CMAKE_SOURCE_DIR}/src
     ${CMAKE_CURRENT_BINARY_DIR}
     ${Boost_INCLUDE_DIRS}
-    ${OCC_INCLUDE_DIR}
     ${COIN3D_INCLUDE_DIRS}
     ${ZLIB_INCLUDE_DIR}
     ${PYTHON_INCLUDE_DIRS}
     ${XercesC_INCLUDE_DIRS}
-    ${EIGEN3_INCLUDE_DIR}
 )
 
 set(LibraryGui_LIBS
     Library
-    PartDesignGui
-    SketcherGui
-    PartGui
-    SketcherGui
     FreeCADGui
 )
 
@@ -45,11 +32,6 @@ SET(LibraryGui_SRCS
 
 add_library(LibraryGui SHARED ${LibraryGui_SRCS})
 target_link_libraries(LibraryGui ${LibraryGui_LIBS})
-
-fc_target_copy_resource(LibraryGui 
-    ${CMAKE_SOURCE_DIR}/src/Tools/Library
-    ${CMAKE_BINARY_DIR}/Mod/Library
-    InitGui.py)
 
 SET_BIN_DIR(LibraryGui LibraryGui /Mod/Library)
 SET_PYTHON_PREFIX_SUFFIX(LibraryGui)

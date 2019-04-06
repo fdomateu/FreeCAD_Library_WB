@@ -21,27 +21,62 @@
  ***************************************************************************/
 
 
-#ifndef Library_WORKBENCH_H
-#define Library_WORKBENCH_H
+#include "PreCompiled.h"
+#ifndef _PreComp_
+# include <Python.h>
+#endif
 
-#include <Gui/Workbench.h>
+#include <Base/Console.h>
+#include <Base/PyObjectBase.h>
+#include <Gui/Application.h>
+
+#include "Workbench.h"
+
+#include <CXX/Extensions.hxx>
+#include <CXX/Objects.hxx>
+
+// use a different name to CreateCommand()
+void CreateLibraryCommands(void);
+
 
 namespace LibraryGui {
-
-class Workbench : public Gui::StdWorkbench
+class Module : public Py::ExtensionModule<Module>
 {
-    TYPESYSTEM_HEADER();
-
 public:
-    Workbench();
-    virtual ~Workbench();
+    Module() : Py::ExtensionModule<Module>("LibraryGui")
+    {
+        initialize("This module is the LibraryGui module."); // register with Python
+    }
 
-protected:
-    Gui::MenuItem* setupMenuBar() const;
-    Gui::ToolBarItem* setupToolBars() const;
+    virtual ~Module() {}
+
+private:
 };
+
+PyObject* initModule()
+{
+    return (new Module)->module().ptr();
+}
 
 } // namespace LibraryGui
 
 
-#endif // Library_WORKBENCH_H 
+/* Python entry */
+PyMOD_INIT_FUNC(LibraryGui)
+{
+    if (!Gui::Application::Instance) {
+        PyErr_SetString(PyExc_ImportError, "Cannot load Gui module in console application.");
+        PyMOD_Return(0);
+    }
+
+    // instantiating the commands
+    CreateLibraryCommands();
+    LibraryGui::Workbench::init();
+
+    // ADD YOUR CODE HERE
+    //
+    //
+    PyObject* mod = LibraryGui::initModule();
+    Base::Console().Log("Loading GUI of Library module... done\n");
+    PyMOD_Return(mod);
+}

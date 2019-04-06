@@ -27,11 +27,10 @@
 #endif
 
 #include <Base/Console.h>
-#include <Base/Interpreter.h>
 #include <Base/PyObjectBase.h>
 
-//#include <CXX/Extensions.hxx>
-//#include <CXX/Objects.hxx>
+#include <CXX/Extensions.hxx>
+#include <CXX/Objects.hxx>
 
 
 namespace Library {

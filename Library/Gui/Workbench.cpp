@@ -24,16 +24,11 @@
 #include "PreCompiled.h"
 
 #ifndef _PreComp_
-# include <qobject.h>
 #endif
 
 #include "Workbench.h"
 #include <Gui/MenuManager.h>
 #include <Gui/ToolBarManager.h>
-#include <Gui/Command.h>
-
-
-#include <Mod/Library/Gui/Workbench.h>
 
 using namespace LibraryGui;
 
@@ -52,30 +47,18 @@ Gui::MenuItem* Workbench::setupMenuBar() const
 {
     Gui::MenuItem* root = StdWorkbench::setupMenuBar();
     Gui::MenuItem* item = root->findItem( "&Windows" );
-
     Gui::MenuItem* test = new Gui::MenuItem;
-    root->insertItem( item, editlib );
-    editlib->setCommand("Library");  
-    *editlib << "Library_ImportPart"
-             << "Library_ImportAssembly"
-
+    root->insertItem( item, test );
+    test->setCommand("Library");
+    *test << "Library_Test";
     return root;
 }
 
 Gui::ToolBarItem* Workbench::setupToolBars() const
 {
     Gui::ToolBarItem* root = StdWorkbench::setupToolBars();
-    Gui::ToolBarItem* libtools = new Gui::ToolBarItem(root);
-    libtools->setCommand( "Library Tools" );
-    *libtools << "Library_ImportAssembly"
-              << "Library_ImportAssembly"
-
-    return root;
-}
-
-Gui::ToolBarItem* Workbench::setupCommandBars() const
-{
-    // Part tools
-    Gui::ToolBarItem* root = new Gui::ToolBarItem;
+    Gui::ToolBarItem* test = new Gui::ToolBarItem(root);
+    test->setCommand( "Library Tools" );
+    *test << "Library_Test"; 
     return root;
 }

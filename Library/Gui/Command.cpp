@@ -21,27 +21,43 @@
  ***************************************************************************/
 
 
-#ifndef Library_WORKBENCH_H
-#define Library_WORKBENCH_H
+#include "PreCompiled.h"
+#ifndef _PreComp_
+#endif
 
-#include <Gui/Workbench.h>
+#include <Base/Console.h>
+#include <App/Document.h>
+#include <Gui/Application.h>
+#include <Gui/Command.h>
 
-namespace LibraryGui {
 
-class Workbench : public Gui::StdWorkbench
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+//===========================================================================
+// CmdLibraryTest THIS IS JUST A TEST COMMAND
+//===========================================================================
+DEF_STD_CMD(CmdLibraryTest)
+
+CmdLibraryTest::CmdLibraryTest()
+  :Command("Library_Test")
 {
-    TYPESYSTEM_HEADER();
+    sAppModule    = "Library";
+    sGroup        = QT_TR_NOOP("Library");
+    sMenuText     = QT_TR_NOOP("Hello");
+    sToolTipText  = QT_TR_NOOP("Library Test function");
+    sWhatsThis    = "Library_Test";
+    sStatusTip    = QT_TR_NOOP("Library Test function");
+    sPixmap       = "Test1";
+    sAccel        = "CTRL+H";
+}
 
-public:
-    Workbench();
-    virtual ~Workbench();
+void CmdLibraryTest::activated(int)
+{
+    Base::Console().Message("Hello, World!\n");
+}
 
-protected:
-    Gui::MenuItem* setupMenuBar() const;
-    Gui::ToolBarItem* setupToolBars() const;
-};
-
-} // namespace LibraryGui
-
-
-#endif // Library_WORKBENCH_H 
+void CreateLibraryCommands(void)
+{
+    Gui::CommandManager &rcCmdMgr = Gui::Application::Instance->commandManager();
+    rcCmdMgr.addCommand(new CmdLibraryTest());
+}

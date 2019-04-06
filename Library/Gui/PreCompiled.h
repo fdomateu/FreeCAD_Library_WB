@@ -28,9 +28,11 @@
 
 // Importing of App classes
 #ifdef FC_OS_WIN32
-
+# define LibraryAppExport __declspec(dllimport)
+# define LibraryGuiExport __declspec(dllexport)
 #else // for Linux
-
+# define LibraryAppExport
+# define LibraryGuiExport
 #endif
 
 #ifdef _PreComp_

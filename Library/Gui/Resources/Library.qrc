@@ -1,6 +1,4 @@
 <!DOCTYPE RCC><RCC version="1.0">
-    <qresource>
-    <file>icons/LibraryWorkbench.svg</file>
-    <file>icons/Library_StandardBody.svg</file> 
+    <qresource> 
     </qresource>
 </RCC> 

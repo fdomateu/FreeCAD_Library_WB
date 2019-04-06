@@ -38,6 +38,8 @@ class NutInfo(StandardPartInfo):
     def getMetric(self):
         if self.metric != None:
             return self.metric
+        else:
+            return None
     
     def setPitch(self, prop):
         self.pitch = prop
@@ -45,6 +47,8 @@ class NutInfo(StandardPartInfo):
     def getPitch(self):
         if self.pitch != None:
             return self.pitch
+        else:
+            return None
     
     def setPossibleMetrics(self):
         self.posmetrics = list()

@@ -30,7 +30,7 @@ class WasherInfo(StandardPartInfo):
     "The standard part info object from standard washer object"
 
     def __init__(self):
-        StandardPartInfo.__init__(self, obj)
+        StandardPartInfo.__init__(self)
     
     def setDiameter(self, prop):
         self.diameter = prop
@@ -38,6 +38,8 @@ class WasherInfo(StandardPartInfo):
     def getDiameter(self):
         if self.diameter != None:
             return self.diameter
+        else:
+            return None
     
     def setPossibleDiameters(self):
         self.posdiameters = list()
